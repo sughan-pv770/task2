@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Registration</title>
+</head>
+
+<body style="font-family: Arial; background-color:#f4f6f8;">
+
+    <h2 style="text-align:center;">User Registration</h2>
+
+    <form action="/submit" method="post"
+          style="width:300px; margin:auto; background:white; padding:20px;"
+          onsubmit="return validateForm()">
+
+        <label>Name</label><br>
+        <input type="text" id="name" name="name"
+               style="width:100%; margin-bottom:10px;"><br>
+
+        <label>Email</label><br>
+        <input type="text" id="email" name="email"
+               style="width:100%; margin-bottom:10px;"><br>
+
+        <label>Password</label><br>
+        <input type="password" id="password" name="password"
+               style="width:100%; margin-bottom:10px;"><br>
+
+        <span id="error" style="color:red;"></span><br><br>
+
+        <input type="submit" value="Register"
+               style="width:100%; background:#4a6cf7; color:white; border:none;">
+    </form>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            if (name === "" || email === "" || password === "") {
+                document.getElementById("error").innerHTML = "All fields required";
+                return false;
+            }
+
+            if (!email.includes("@")) {
+                document.getElementById("error").innerHTML = "Invalid email";
+                return false;
+            }
+
+            if (password.length < 6) {
+                document.getElementById("error").innerHTML = "Password too short";
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+
+</body>
+</html>
